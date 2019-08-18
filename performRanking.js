@@ -1,4 +1,5 @@
-const { every } = require('lodash');
+const { every, first } = require('lodash');
+const { permutations } = require('./permutatons');
 const {
   validatorsFromKnowledgeStatements,
 } = require('./validatorsFromKnowledgeStatements');
@@ -12,7 +13,8 @@ const validateRanking = ranking => {
   return every(validations, isTruthy);
 };
 
-const performRanking = developers => validateRanking(developers) && developers;
+const performRanking = developers =>
+  first(Array.from(permutations(developers)).filter(validateRanking));
 
 module.exports = {
   performRanking,
