@@ -6,7 +6,7 @@ const {
   isNotDirectlyBelowOrAbove,
 } = require('./validators');
 
-const validatorsFromKnowledgeStatements = [
+const validatorsFromKnowledgeStatements = () => [
   isNotTheBest('Jessie'),
   isNotTheWorst('Evan'),
   isNotTheBestOrTheWorst('John'),
