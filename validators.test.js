@@ -35,5 +35,11 @@ describe('validators', () => {
       const ranking = ['Jessie', 'John', 'Evan'];
       expect(notBestOrWorst(developer, ranking)).toEqual(true);
     });
+
+    it('should return false if developer is the first element', () => {
+      const developer = 'John';
+      const ranking = ['John', 'Jessie', 'Evan'];
+      expect(notBestOrWorst(developer, ranking)).toEqual(false);
+    });
   });
 });
