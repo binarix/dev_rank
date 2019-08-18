@@ -3,6 +3,7 @@ const {
   notWorst,
   notBestOrWorst,
   betterThan,
+  isNotDirectlyBelowOrAbove,
 } = require('./validators');
 
 describe('validators', () => {
@@ -67,6 +68,17 @@ describe('validators', () => {
       const otherDeveloper = 'Evan';
       const ranking = ['Evan', 'Jessie', 'Sarah'];
       expect(betterThan(developer, otherDeveloper, ranking)).toEqual(false);
+    });
+  });
+
+  describe('isNotDirectlyBelowOrAbove', () => {
+    it('should return true if developer has index not directly above or below otherDeveloper', () => {
+      const developer = 'Matt';
+      const otherDeveloper = 'John';
+      const ranking = ['Matt', 'Evan', 'John'];
+      expect(
+        isNotDirectlyBelowOrAbove(developer, otherDeveloper, ranking),
+      ).toEqual(true);
     });
   });
 });

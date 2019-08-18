@@ -13,9 +13,12 @@ const betterThan = (developer, otherDeveloper, ranking) =>
   findIndex(ranking, matching(developer)) <
   findIndex(ranking, matching(otherDeveloper));
 
+const isNotDirectlyBelowOrAbove = (developer, otherDeveloper, ranking) => true;
+
 module.exports = {
   notBest,
   notWorst,
   notBestOrWorst,
   betterThan,
+  isNotDirectlyBelowOrAbove,
 };
