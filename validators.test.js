@@ -1,4 +1,4 @@
-const { notBest, notWorst } = require('./validators');
+const { notBest, notWorst, notBestOrWorst } = require('./validators');
 
 describe('validators', () => {
   describe('notBest', () => {
@@ -26,6 +26,14 @@ describe('validators', () => {
       const developer = 'Evan';
       const ranking = ['Jessie', 'John', 'Evan'];
       expect(notWorst(developer, ranking)).toEqual(false);
+    });
+  });
+
+  describe('notBestOrWorst', () => {
+    it('should return true if developer is not the first or last element', () => {
+      const developer = 'John';
+      const ranking = ['Jessie', 'John', 'Evan'];
+      expect(notBestOrWorst(developer, ranking)).toEqual(true);
     });
   });
 });
