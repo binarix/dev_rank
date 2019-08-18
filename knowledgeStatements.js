@@ -1,4 +1,4 @@
-export const statements = [
+export const knowledgeStatements = [
   'Jessie is not the best developer',
   'Evan is not the worst developer',
   'John is not the best developer or the worst developer',
