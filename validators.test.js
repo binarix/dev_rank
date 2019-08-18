@@ -72,13 +72,22 @@ describe('validators', () => {
   });
 
   describe('isNotDirectlyBelowOrAbove', () => {
-    it('should return true if developer has index not directly above or below otherDeveloper', () => {
+    it('should return true if developer has index not directly below or above otherDeveloper', () => {
       const developer = 'Matt';
       const otherDeveloper = 'John';
       const ranking = ['Matt', 'Evan', 'John'];
       expect(
         isNotDirectlyBelowOrAbove(developer, otherDeveloper, ranking),
       ).toEqual(true);
+    });
+
+    it('should return false if developer has index directly below otherDeveloper', () => {
+      const developer = 'Matt';
+      const otherDeveloper = 'John';
+      const ranking = ['Matt', 'John', 'Evan'];
+      expect(
+        isNotDirectlyBelowOrAbove(developer, otherDeveloper, ranking),
+      ).toEqual(false);
     });
   });
 });
