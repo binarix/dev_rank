@@ -61,5 +61,12 @@ describe('validators', () => {
       const ranking = ['Sarah', 'Jessie', 'Evan'];
       expect(betterThan(developer, otherDeveloper, ranking)).toEqual(true);
     });
+
+    it('should return false if developer has a higher index than otherDeveloper', () => {
+      const developer = 'Sarah';
+      const otherDeveloper = 'Evan';
+      const ranking = ['Evan', 'Jessie', 'Sarah'];
+      expect(betterThan(developer, otherDeveloper, ranking)).toEqual(false);
+    });
   });
 });
