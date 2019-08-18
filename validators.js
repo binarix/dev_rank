@@ -17,8 +17,15 @@ const isDirectlyBelow = (developer, otherDeveloper, ranking) =>
   findIndex(ranking, matching(developer)) ===
   findIndex(ranking, matching(otherDeveloper)) - 1;
 
+const isDirectlyAbove = (developer, otherDeveloper, ranking) =>
+  findIndex(ranking, matching(developer)) ===
+  findIndex(ranking, matching(otherDeveloper)) + 1;
+
 const isNotDirectlyBelowOrAbove = (developer, otherDeveloper, ranking) =>
-  !isDirectlyBelow(developer, otherDeveloper, ranking);
+  !(
+    isDirectlyBelow(developer, otherDeveloper, ranking) ||
+    isDirectlyAbove(developer, otherDeveloper, ranking)
+  );
 
 module.exports = {
   notBest,
