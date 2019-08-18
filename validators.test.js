@@ -1,73 +1,73 @@
 const {
-  notBest,
-  notWorst,
-  notBestOrWorst,
-  betterThan,
+  isNotTheBest,
+  isNotTheWorst,
+  isNotTheBestOrTheWorst,
+  isBetterThan,
   isNotDirectlyBelowOrAbove,
 } = require('./validators');
 
 describe('validators', () => {
-  describe('notBest', () => {
+  describe('isNotTheBest', () => {
     it('should return true if developer is not the first element', () => {
       const developer = 'Jessie';
       const ranking = ['Evan', 'Jessie', 'John'];
-      expect(notBest(developer, ranking)).toEqual(true);
+      expect(isNotTheBest(developer, ranking)).toEqual(true);
     });
 
     it('should return false if developer is the first element', () => {
       const developer = 'Jessie';
       const ranking = ['Jessie', 'Evan', 'John'];
-      expect(notBest(developer, ranking)).toEqual(false);
+      expect(isNotTheBest(developer, ranking)).toEqual(false);
     });
   });
 
-  describe('notWorst', () => {
+  describe('isNotTheWorst', () => {
     it('should return true if developer is not the last element', () => {
       const developer = 'Evan';
       const ranking = ['Jessie', 'Evan', 'John'];
-      expect(notWorst(developer, ranking)).toEqual(true);
+      expect(isNotTheWorst(developer, ranking)).toEqual(true);
     });
 
     it('should return false if developer is the last element', () => {
       const developer = 'Evan';
       const ranking = ['Jessie', 'John', 'Evan'];
-      expect(notWorst(developer, ranking)).toEqual(false);
+      expect(isNotTheWorst(developer, ranking)).toEqual(false);
     });
   });
 
-  describe('notBestOrWorst', () => {
+  describe('isNotTheBestOrTheWorst', () => {
     it('should return true if developer is not the first or last element', () => {
       const developer = 'John';
       const ranking = ['Jessie', 'John', 'Evan'];
-      expect(notBestOrWorst(developer, ranking)).toEqual(true);
+      expect(isNotTheBestOrTheWorst(developer, ranking)).toEqual(true);
     });
 
     it('should return false if developer is the first element', () => {
       const developer = 'John';
       const ranking = ['John', 'Jessie', 'Evan'];
-      expect(notBestOrWorst(developer, ranking)).toEqual(false);
+      expect(isNotTheBestOrTheWorst(developer, ranking)).toEqual(false);
     });
 
     it('should return false if developer is the last element', () => {
       const developer = 'John';
       const ranking = ['Evan', 'Jessie', 'John'];
-      expect(notBestOrWorst(developer, ranking)).toEqual(false);
+      expect(isNotTheBestOrTheWorst(developer, ranking)).toEqual(false);
     });
   });
 
-  describe('betterThan', () => {
+  describe('isBetterThan', () => {
     it('should return true if developer has a lower index than otherDeveloper', () => {
       const developer = 'Sarah';
       const otherDeveloper = 'Evan';
       const ranking = ['Sarah', 'Jessie', 'Evan'];
-      expect(betterThan(developer, otherDeveloper, ranking)).toEqual(true);
+      expect(isBetterThan(developer, otherDeveloper, ranking)).toEqual(true);
     });
 
     it('should return false if developer has a higher index than otherDeveloper', () => {
       const developer = 'Sarah';
       const otherDeveloper = 'Evan';
       const ranking = ['Evan', 'Jessie', 'Sarah'];
-      expect(betterThan(developer, otherDeveloper, ranking)).toEqual(false);
+      expect(isBetterThan(developer, otherDeveloper, ranking)).toEqual(false);
     });
   });
 
