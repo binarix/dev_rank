@@ -7,8 +7,11 @@ const notWorst = (developer, ranking) => last(ranking) !== developer;
 const notBestOrWorst = (developer, ranking) =>
   notBest(developer, ranking) && notWorst(developer, ranking);
 
+const betterThan = (developer, otherDeveloper, ranking) => true;
+
 module.exports = {
   notBest,
   notWorst,
   notBestOrWorst,
+  betterThan,
 };

@@ -1,4 +1,9 @@
-const { notBest, notWorst, notBestOrWorst } = require('./validators');
+const {
+  notBest,
+  notWorst,
+  notBestOrWorst,
+  betterThan,
+} = require('./validators');
 
 describe('validators', () => {
   describe('notBest', () => {
@@ -46,6 +51,15 @@ describe('validators', () => {
       const developer = 'John';
       const ranking = ['Evan', 'Jessie', 'John'];
       expect(notBestOrWorst(developer, ranking)).toEqual(false);
+    });
+  });
+
+  describe('betterThan', () => {
+    it('should return true if developer has a lower index than otherDeveloper', () => {
+      const developer = 'Sarah';
+      const otherDeveloper = 'Evan';
+      const ranking = ['Sarah', 'Jessie', 'Evan'];
+      expect(betterThan(developer, otherDeveloper, ranking)).toEqual(true);
     });
   });
 });
