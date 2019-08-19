@@ -1,5 +1,5 @@
-const { parseIsNotTheBest } = require('./parsers');
-const { isNotTheBest } = require('./validators');
+const { parseIsNotTheBest, parseIsNotTheWorst } = require('./parsers');
+const { isNotTheBest, isNotTheWorst } = require('./validators');
 
 jest.mock('./validators');
 
@@ -21,6 +21,17 @@ describe('parsers', () => {
       const result = parseIsNotTheBest(knowledgeStatement);
       expect(isNotTheBest).not.toBeCalled();
       expect(result).toEqual(null);
+    });
+  });
+
+  describe('parseIsNotTheWorst', () => {
+    it('should return isNotTheWorst validator with correct parameters if knowledgeStatement matches', () => {
+      const expected = 'isNotTheWorst';
+      isNotTheWorst.mockReturnValueOnce(expected);
+      const knowledgeStatement = 'Evan is not the worst developer';
+      const result = parseIsNotTheWorst(knowledgeStatement);
+      expect(isNotTheWorst).toBeCalledWith('Evan');
+      expect(result).toEqual(expected);
     });
   });
 });
