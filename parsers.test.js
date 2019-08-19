@@ -102,5 +102,13 @@ describe('parsers', () => {
       expect(isNotDirectlyBelowOrAbove).toBeCalledWith('Matt', 'John');
       expect(result).toEqual(expected);
     });
+
+    it('should return null if knowledgeStatement does not match', () => {
+      const knowledgeStatement =
+        'Matt is directly below or above John as a developer';
+      const result = parseIsNotDirectlyBelowOrAbove(knowledgeStatement);
+      expect(isNotDirectlyBelowOrAbove).not.toBeCalled();
+      expect(result).toEqual(null);
+    });
   });
 });
