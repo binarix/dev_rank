@@ -81,5 +81,12 @@ describe('parsers', () => {
       expect(isBetterThan).toBeCalledWith('Sarah', 'Evan');
       expect(result).toEqual(expected);
     });
+
+    it('should return null if knowledgeStatement does not match', () => {
+      const knowledgeStatement = 'Sarah is not a better developer than Evan';
+      const result = parseIsBetterThan(knowledgeStatement);
+      expect(isBetterThan).not.toBeCalled();
+      expect(result).toEqual(null);
+    });
   });
 });
