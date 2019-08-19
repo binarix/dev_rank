@@ -1,5 +1,9 @@
 const { nth } = require('lodash');
-const { isNotTheBest, isNotTheWorst } = require('./validators');
+const {
+  isNotTheBest,
+  isNotTheWorst,
+  isNotTheBestOrTheWorst,
+} = require('./validators');
 
 const isNotTheBestRegex = /^(.*) is not the best developer$/;
 
@@ -15,7 +19,15 @@ const parseIsNotTheWorst = knowledgeStatement => {
   return matches && isNotTheWorst(nth(matches, 1));
 };
 
+const isNotTheBestOrTheWorstRegex = /^(.*) is not the best developer or the worst developer$/;
+
+const parseIsNotTheBestOrTheWorst = knowledgeStatement => {
+  const matches = isNotTheBestOrTheWorstRegex.exec(knowledgeStatement);
+  return matches && isNotTheBestOrTheWorst(nth(matches, 1));
+};
+
 module.exports = {
   parseIsNotTheBest,
   parseIsNotTheWorst,
+  parseIsNotTheBestOrTheWorst,
 };
