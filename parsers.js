@@ -4,6 +4,7 @@ const {
   isNotTheWorst,
   isNotTheBestOrTheWorst,
   isBetterThan,
+  isNotDirectlyBelowOrAbove,
 } = require('./validators');
 
 const isNotTheBestRegex = /^(.*) is not the best developer$/;
@@ -34,9 +35,17 @@ const parseIsBetterThan = knowledgeStatement => {
   return matches && isBetterThan(nth(matches, 1), nth(matches, 2));
 };
 
+const isNotDirectlyBelowOrAboveRegex = /^(.*) is not directly below or above (.*) as a developer$/;
+
+const parseIsNotDirectlyBelowOrAbove = knowledgeStatement => {
+  const matches = isNotDirectlyBelowOrAboveRegex.exec(knowledgeStatement);
+  return matches && isNotDirectlyBelowOrAbove(nth(matches, 1), nth(matches, 2));
+};
+
 module.exports = {
   parseIsNotTheBest,
   parseIsNotTheWorst,
   parseIsNotTheBestOrTheWorst,
   parseIsBetterThan,
+  parseIsNotDirectlyBelowOrAbove,
 };

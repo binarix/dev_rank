@@ -3,12 +3,14 @@ const {
   parseIsNotTheWorst,
   parseIsNotTheBestOrTheWorst,
   parseIsBetterThan,
+  parseIsNotDirectlyBelowOrAbove,
 } = require('./parsers');
 const {
   isNotTheBest,
   isNotTheWorst,
   isNotTheBestOrTheWorst,
   isBetterThan,
+  isNotDirectlyBelowOrAbove,
 } = require('./validators');
 
 jest.mock('./validators');
@@ -87,6 +89,18 @@ describe('parsers', () => {
       const result = parseIsBetterThan(knowledgeStatement);
       expect(isBetterThan).not.toBeCalled();
       expect(result).toEqual(null);
+    });
+  });
+
+  describe('parseIsNotDirectlyBelowOrAbove', () => {
+    it('should return isNotDirectlyBelowOrAbove validator with correct parameters if knowledgeStatement matches', () => {
+      const expected = 'isNotDirectlyBelowOrAbove';
+      isNotDirectlyBelowOrAbove.mockReturnValueOnce(expected);
+      const knowledgeStatement =
+        'Matt is not directly below or above John as a developer';
+      const result = parseIsNotDirectlyBelowOrAbove(knowledgeStatement);
+      expect(isNotDirectlyBelowOrAbove).toBeCalledWith('Matt', 'John');
+      expect(result).toEqual(expected);
     });
   });
 });
