@@ -60,5 +60,13 @@ describe('parsers', () => {
       expect(isNotTheBestOrTheWorst).toBeCalledWith('John');
       expect(result).toEqual(expected);
     });
+
+    it('should return null if knowledgeStatement does not match', () => {
+      const knowledgeStatement =
+        'John is the best developer or the worst developer';
+      const result = parseIsNotTheBestOrTheWorst(knowledgeStatement);
+      expect(isNotTheBestOrTheWorst).not.toBeCalled();
+      expect(result).toEqual(null);
+    });
   });
 });
