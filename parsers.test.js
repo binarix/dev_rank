@@ -15,5 +15,12 @@ describe('parsers', () => {
       expect(isNotTheBest).toBeCalledWith('Jessie');
       expect(result).toEqual(expected);
     });
+
+    it('should return null if knowledgeStatement does not match', () => {
+      const knowledgeStatement = 'Jessie is the best developer';
+      const result = parseIsNotTheBest(knowledgeStatement);
+      expect(isNotTheBest).not.toBeCalled();
+      expect(result).toEqual(null);
+    });
   });
 });
